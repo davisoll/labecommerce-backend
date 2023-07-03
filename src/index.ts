@@ -5,7 +5,6 @@ import {
     getAllUsers,
     getAllProducts,
     createProduct,
-    
  } from "./database"
 
 console.log("O aplicativo foi iniciado!")

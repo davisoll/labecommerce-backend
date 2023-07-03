@@ -47,12 +47,14 @@ export const getAllProducts = (): TProducts[] => {
     return products
 }
 
-export const searchProductsByName = (// FALTA ESSA FUNÇÃO
-    name: string
-): TProducts => {
+// export const searchProductsByName = (// FALTA ESSA FUNÇÃO
+//     name: string
+// ): TProducts => {
 
-    return ()
-}
+//     return (
+        
+//     )
+// }
 
 export const users: TUser[] = [
     {
