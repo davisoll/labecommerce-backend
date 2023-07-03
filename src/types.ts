@@ -4,7 +4,7 @@ export type TUser = {
     name: string,
     email: string,
     password: string,
-    createdAt: 'new Date().toISOString()'
+    createdAt: string
 } 
 
 export type TProducts = {
