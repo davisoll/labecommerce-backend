@@ -1,8 +1,25 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = require("./database");
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use((0, cors_1.default)());
 console.log("O aplicativo foi iniciado!");
-console.log(database_1.users, database_1.products);
-console.log(new Date().toISOString());
-console.log((0, database_1.createUser)('u003', 'Ciclano', 'ciclano@email.com', 'ciclano00'));
+app.listen(3003, () => {
+    console.log('Servidor rodando na porta 3003');
+});
+app.get('/ping', (req, res) => {
+    res.send('Pong!');
+});
+app.get('/users', (req, res) => {
+    res.status(200).send(database_1.users);
+});
+app.get('/products', (req, res) => {
+    res.status(200).send(database_1.products);
+});
 //# sourceMappingURL=index.js.map
