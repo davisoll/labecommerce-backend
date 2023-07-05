@@ -14,7 +14,7 @@ exports.users = [
         name: 'Beltrana',
         email: 'beltrana@email.com',
         password: 'beltrana00',
-        createdAt: 'new Date().toISOString()'
+        createdAt: new Date().toISOString()
     }
 ];
 exports.products = [
@@ -45,7 +45,7 @@ const createUser = (id, name, email, password) => {
         createdAt: new Date().toISOString()
     };
     exports.users.push(newUser);
-    console.log('Usuário cadastrado com sucesso!');
+    return ('Usuário cadastrado com sucesso!');
 };
 exports.createUser = createUser;
 const createProduct = (id, name, price, description, imageURL) => {
