@@ -20,6 +20,30 @@ app.get('/users', (req, res) => {
     res.status(200).send(database_1.users);
 });
 app.get('/products', (req, res) => {
-    res.status(200).send(database_1.products);
+    const nameToFind = req.query.name;
+    if (nameToFind) {
+        const result = database_1.products.filter((product) => product.name.toLocaleLowerCase().includes(nameToFind.toLocaleLowerCase()));
+        res.status(200).send(result);
+    }
+    else {
+        res.status(200).send(database_1.products);
+    }
+});
+app.post('/users', (req, res) => {
+    const id = req.body.id;
+    const name = req.body.name;
+    const email = req.body.name;
+    const password = req.body.password;
+    const result = (0, database_1.createUser)(id, name, email, password);
+    res.status(201).send(result);
+});
+app.post('/products', (req, res) => {
+    const id = req.body.id;
+    const name = req.body.name;
+    const price = req.body.price;
+    const description = req.body.description;
+    const imageUrl = req.body.imageUrl;
+    const result = (0, database_1.createProduct)(id, name, price, description, imageUrl);
+    res.status(201).send(result);
 });
 //# sourceMappingURL=index.js.map

@@ -14,7 +14,7 @@ export const users: TUser[] = [
         name: 'Beltrana',
         email: 'beltrana@email.com',
         password: 'beltrana00',
-        createdAt: 'new Date().toISOString()'
+        createdAt: new Date().toISOString()
     }
 ]
 
@@ -46,7 +46,7 @@ export const createUser = (
     name: string,
     email: string,
     password: string,
-): void => { // void é o tipo de saida de uma função que não tem returno
+): string => { // void é o tipo de saida de uma função que não tem returno
 
     const newUser: TUser = {
         id: id,
@@ -56,7 +56,7 @@ export const createUser = (
         createdAt: new Date().toISOString()
     }
     users.push(newUser)
-    console.log('Usuário cadastrado com sucesso!')
+    return ('Usuário cadastrado com sucesso!')
 }
 
 export const createProduct = (
