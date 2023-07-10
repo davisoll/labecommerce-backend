@@ -74,7 +74,7 @@ app.delete('/user/:id', (req: Request, res: Response) => {
     res.status(200).send('User apagado com sucesso!')
 })
 
-app.delete('/products/:id', (req: Request, res: Response) => {
+app.delete('/product/:id', (req: Request, res: Response) => {
     const idToDelete = req.params.id
     const productIndex = products.findIndex((product) => product.id === idToDelete)
 
