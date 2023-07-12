@@ -85,21 +85,26 @@ app.delete('/product/:id', (req: Request, res: Response) => {
 })
 
 app.put('/products/:id', (req: Request, res: Response) => {
-    const idToEdit = req.params.id
+
+    try{
+        const idToEdit = req.params.id
+
+        const newId = req.body.id as string | undefined
+        const newName = req.body.name as string | undefined
+        const newPrice = req.body.price as number | undefined
+        const newDescription = req.body.description as string | undefined
+        const newImage = req.body.imageUrl as string | undefined
     
-    const newId = req.body.id as string | undefined
-    const newName = req.body.name as string | undefined
-    const newPrice = req.body.price as number | undefined
-    const newDescription = req.body.description as string | undefined
-    const newImage = req.body.imageUrl as string | undefined
-
-    const product = products.find((product) => product.id === idToEdit)
-    if(product) {
-        product.id = newId || product.id
-        product.name = newName || product.name
-        product.description = newDescription || product.description
-        product.imageUrl = newImage || product.imageUrl
-        product.price = isNaN(Number(newPrice)) ? product.price : newPrice as number
-    }
+        const product = products.find((product) => product.id === idToEdit)
+        if(product) {
+            product.id = newId || product.id
+            product.name = newName || product.name
+            product.description = newDescription || product.description
+            product.imageUrl = newImage || product.imageUrl
+            product.price = isNaN(Number(newPrice)) ? product.price : newPrice as number
+        }    
+    }catch (error: any){
+        console.log(error)
+        res.status(400)
+    }   
 })
-
